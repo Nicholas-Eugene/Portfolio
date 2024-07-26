@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" ng-app="portfolioApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-controller="PortfolioController">
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-lg bg-danger shadow-lg p-3 mb-5 bg fixed-top" data-bs-theme="dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#education">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!--Content-->
+    <div class="container mt-5 pt-5">
+      <!-- Home Section -->
+      <section id="home" class="mb-5 fade-in">
+        <div class="rounded shadow p-5 text-center bg-danger text-light">
+          <div class="image-container">
+            <img src="img/profile.png" alt="Profile Image" class="circle-image">
+          </div>
+          <h1>Nicholas Eugene Supardi</h1>
+          <p>A Computer Science Student</p>
+        </div>
+      </section>
+      
+      <!-- About Section -->
+      <section id="about" class="mb-5 shadow about-section fade-in">
+        <h2 class="text-center">About Me</h2>
+        <div class="card border-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p>A dedicated computer science student with a passion for problem-solving and creating innovative software solutions. With a strong foundation in programming, data structures, and algorithms, I am eager to apply my knowledge to real-world challenges. I thrive in collaborative environments and am constantly seeking opportunities to learn and grow as a developer.</p>
+              </div>
+              <div class="col-md-6">
+                <img src="img/work.jpg" alt="About Me" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Education Section -->
+      <section id="education" class="fade-in mb-5">
+        <h2 class="text-center">Education Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item mb-3 rounded shadow" ng-repeat="edu in education">
+            <div class="card border-0">
+              <div class="card-body">
+                <div class="timeline-content">
+                  <div class="text">
+                    <h4 class="card-title text-center p-2">{{edu.school}}</h4>
+                    <p><strong>Year:</strong> {{edu.year}}</p>
+                    <p><strong>Description:</strong> {{edu.description}}</p>
+                  </div>
+                  <div class="image">
+                    <img ng-src="{{edu.photo}}" class="img-fluid mb-3" alt="School Photo">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Projects Section -->
+      <section id="projects" class="fade-in mb-5">
+        <h2 class="text-center">Project Portfolio</h2>
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="card m-3 bg-danger text-light shadow border-0" style="width: 18rem;" ng-repeat="project in projects">
+            <div class="card-body">
+              <h4 class="card-title">{{project.title}}</h4>
+              <p>{{project.details}}</p>
+              <!-- Link to GitHub or live demo -->
+              <a ng-href="{{project.link}}" target="_blank" class="text-white">View Project</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Skills Section -->
+      <section id="skills" class="fade-in mb-5">
+        <h2 class="text-center">Programming Skills</h2>
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="card m-3 bg-danger text-light shadow" style="width: 12rem;" ng-repeat="skill in skills">
+            <img ng-src="{{skill.image}}" class="card-img-top" alt="{{skill.name}}">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{skill.name}}</h5>
+            </div>
+          </div>
+        </div>
+      </section>      
+    </div>
+    
+    <footer class="bg-dark text-light pt-3 mt-5">
+      <div class="container text-center">
+        <h5>Connect with me</h5>
+        <div class="d-flex justify-content-center">
+          <a href="https://www.instagram.com/nicholases212/" target="_blank" class="text-white m-2">
+            <img src="img/icon/instagram.png" alt="Instagram" width="30">
+          </a>
+          <a href="https://x.com/Ev4de_NES" target="_blank" class="text-white m-2">
+            <img src="img/icon/x.png" alt="Twitter" width="30">
+          </a>
+          <a href="https://github.com/Nicholas-Eugene" target="_blank" class="text-white m-2">
+            <img src="img/icon/github.png" alt="GitHub" width="30">
+          </a>
+        </div>
+        <p class="mt-3">&copy; 2024 Nicholas Eugene Supardi. All rights reserved.</p>
+      </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
