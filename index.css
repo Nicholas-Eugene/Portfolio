@@ -212,3 +212,104 @@ footer {
     text-align: center;
     color: #ccc;
 }
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Navbar transitions */
+.navbar {
+    transition: all 0.3s ease;
+}
+
+.navbar-scrolled {
+    padding: 0.5rem 1rem !important;
+    background-color: rgba(33, 37, 41, 0.98) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation styles */
+.skill-card, .portfolio-card, .profile-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card hover effects */
+.skill-card, .portfolio-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover, .portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Skill icons */
+.skill-icon {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.1);
+}
+
+/* Portfolio cards */
+.portfolio-card {
+    overflow: hidden;
+}
+
+.portfolio-card img {
+    transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Form animations */
+.btn {
+    transition: all 0.3s ease;
+}
+
+/* Section transitions */
+section {
+    padding: 5rem 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Profile image */
+.profile-img {
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+/* Social links */
+.social-links a {
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+/* Additional smooth transitions */
+* {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+}

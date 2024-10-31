@@ -1,59 +1,66 @@
-const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Observe all skill cards and portfolio cards
 document.addEventListener('DOMContentLoaded', () => {
-    // Animate skill cards
-    const skillCards = document.querySelectorAll('.skill-card');
-    skillCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 100}ms`;
-        observer.observe(card);
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
 
-    // Animate portfolio cards
-    const portfolioCards = document.querySelectorAll('.portfolio-card');
-    portfolioCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 100}ms`;
-        observer.observe(card);
+    // Animation observer setup
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px'
+    });
+
+    // Observe all animated elements
+    const animatedElements = document.querySelectorAll('.skill-card, .portfolio-card, .profile-content');
+    animatedElements.forEach((el, index) => {
+        el.style.transitionDelay = `${index * 100}ms`;
+        observer.observe(el);
     });
 
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.padding = '0.5rem 1rem';
-            navbar.style.backgroundColor = 'rgba(16, 0, 43, 0.98)';
+            navbar.classList.add('navbar-scrolled');
         } else {
-            navbar.style.padding = '1rem';
-            navbar.style.backgroundColor = 'rgba(16, 0, 43, 0.95)';
+            navbar.classList.remove('navbar-scrolled');
         }
     });
 
     // Form submission animation
     const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const btn = this.querySelector('button[type="submit"]');
-        btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
-        
-        setTimeout(() => {
-            btn.innerHTML = 'Message Sent!';
-            btn.classList.add('btn-success');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+            btn.disabled = true;
+            
             setTimeout(() => {
-                btn.innerHTML = 'Send Message';
-                btn.classList.remove('btn-success');
-                this.reset();
-            }, 2000);
-        }, 1500);
-    });
+                btn.innerHTML = 'Message Sent!';
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-success');
+                
+                setTimeout(() => {
+                    btn.innerHTML = 'Send Message';
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-primary');
+                    btn.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+    }
 });
