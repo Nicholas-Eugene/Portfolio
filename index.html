@@ -1,143 +1,294 @@
-<!doctype html>
-<html lang="en" ng-app="portfolioApp">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-controller="PortfolioController">
-    <!--Navigation-->
-    <nav class="navbar navbar-expand-lg bg-danger shadow-lg p-3 mb-5 bg fixed-top" data-bs-theme="dark">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#education">Education</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-          </ul>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">N E S</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
-    
-    <!--Content-->
-    <div class="container mt-5 pt-5">
-      <!-- Home Section -->
-      <section id="home" class="mb-5 fade-in">
-        <div class="rounded shadow p-5 text-center bg-danger text-light">
-          <div class="image-container">
-            <img src="img/profile.png" alt="Profile Image" class="circle-image">
-          </div>
-          <h1>Nicholas Eugene Supardi</h1>
-          <p>A Computer Science Student</p>
-        </div>
-      </section>
-      
-      <!-- About Section -->
-      <section id="about" class="mb-5 shadow about-section fade-in">
-        <h2 class="text-center">About Me</h2>
-        <div class="card border-0">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <p>A dedicated computer science student with a passion for problem-solving and creating innovative software solutions. With a strong foundation in programming, data structures, and algorithms, I am eager to apply my knowledge to real-world challenges. I thrive in collaborative environments and am constantly seeking opportunities to learn and grow as a developer.</p>
-              </div>
-              <div class="col-md-6">
-                <img src="img/work.jpg" alt="About Me" class="img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Education Section -->
-      <section id="education" class="fade-in mb-5">
-        <h2 class="text-center">Education Timeline</h2>
-        <div class="timeline">
-          <div class="timeline-item mb-3 rounded shadow" ng-repeat="edu in education">
-            <div class="card border-0">
-              <div class="card-body">
-                <div class="timeline-content">
-                  <div class="text">
-                    <h4 class="card-title text-center p-2">{{edu.school}}</h4>
-                    <p><strong>Year:</strong> {{edu.year}}</p>
-                    <p><strong>Description:</strong> {{edu.description}}</p>
-                  </div>
-                  <div class="image">
-                    <img ng-src="{{edu.photo}}" class="img-fluid mb-3" alt="School Photo">
-                  </div>
+
+    <!-- Profile Section -->
+    <section id="profile" class="py-5">
+        <div class="container">
+            <div class="row align-items-center profile-content">
+                <div class="col-md-6">
+                    <h2 class="display-4 fw-bold">About Me</h2>
+                    <p class="lead">I’m a Computer Science student at Tarumanagara University with a passion for merging data and technology to tackle real-world challenges. As an Assistant Lecturer, I support students in Distributed Systems and Front-End Programming, making tech accessible and impactful. My work includes clustering poverty data in West Java using K-Means and Fuzzy C-means, alongside developing web applications like a movie booking platform and a billiard table reservation system. Skilled in tools like Node.js, MongoDB, and Laravel, I’m driven to create user-centered, data-driven projects that make a difference.</p>
                 </div>
-              </div>
+                <div class="col-md-6 text-center">
+                    <img src="images/profile.png" alt="Profile Image" class="profile-img rounded-circle mb-3">
+                    <h3>Nicholas Eugene Supardi</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/nicholaseugene/" class="btn btn-outline-primary btn-lg mx-1 devicon-linkedin-plain" style="font-size: larger;"></a>
+                        <a href="https://github.com/Nicholas-Eugene" class="devicon-github-original btn btn-outline-primary btn-lg mx-1"></a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
-      
-      <!-- Projects Section -->
-      <section id="projects" class="fade-in mb-5">
-        <h2 class="text-center">Project Portfolio</h2>
-        <div class="d-flex flex-wrap justify-content-center">
-          <div class="card m-3 bg-danger text-light shadow border-0" style="width: 18rem;" ng-repeat="project in projects">
-            <div class="card-body">
-              <h4 class="card-title">{{project.title}}</h4>
-              <p>{{project.details}}</p>
-              <!-- Link to GitHub or live demo -->
-              <a ng-href="{{project.link}}" target="_blank" class="text-white">View Project</a>
+    </section>
+
+<section class="skills" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Skills</h2>
+        <div class="mb-5">
+            <h3 class="text-center mb-4">Programming Languages</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-java-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Java</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-python-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Python</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-cplusplus-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">C/C++</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-javascript-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">JavaScript</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
-      
-      <!-- Skills Section -->
-      <section id="skills" class="fade-in mb-5">
-        <h2 class="text-center">Programming Skills</h2>
-        <div class="d-flex flex-wrap justify-content-center">
-          <div class="card m-3 bg-danger text-light shadow" style="width: 12rem;" ng-repeat="skill in skills">
-            <img ng-src="{{skill.image}}" class="card-img-top" alt="{{skill.name}}">
-            <div class="card-body">
-              <h5 class="card-title text-center">{{skill.name}}</h5>
+        <!-- Web Technologies -->
+        <div class="mb-5">
+            <h3 class="text-center mb-4">Web Technologies</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-html5-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">HTML5</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-css3-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">CSS3</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-bootstrap-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Bootstrap</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>      
+        <!-- Frameworks -->
+        <div class="mb-5">
+            <h3 class="text-center mb-4">Frameworks & Tools</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-nodejs-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Node.js</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-laravel-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Laravel</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-angularjs-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">AngularJS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-git-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Git</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Databases -->
+        <div class="mb-5">
+            <h3 class="text-center mb-4">Databases</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-postgresql-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">PostgreSQL</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-mongodb-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">MongoDB</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Libraries -->
+        <div class="mb-5">
+            <h3 class="text-center mb-4">Libraries</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-pandas-original colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Pandas</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-numpy-original colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">NumPy</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-matplotlib-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Matplotlib</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                    <div class="card skill-card">
+                        <i class="devicon-scikitlearn-plain colored skill-icon"></i>
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-0">Scikit-learn</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <footer class="bg-dark text-light pt-3 mt-5">
-      <div class="container text-center">
-        <h5>Connect with me</h5>
-        <div class="d-flex justify-content-center">
-          <a href="https://www.instagram.com/nicholases212/" target="_blank" class="text-white m-2">
-            <img src="img/icon/instagram.png" alt="Instagram" width="30">
-          </a>
-          <a href="https://x.com/Ev4de_NES" target="_blank" class="text-white m-2">
-            <img src="img/icon/x.png" alt="Twitter" width="30">
-          </a>
-          <a href="https://github.com/Nicholas-Eugene" target="_blank" class="text-white m-2">
-            <img src="img/icon/github.png" alt="GitHub" width="30">
-          </a>
+</section>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Portfolio</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card portfolio-card">
+                        <img src="images/xxCinemas.png" class="card-img-top" alt="xxCinemas Project">
+                        <div class="card-body">
+                            <h5 class="card-title">xxCinemas</h5>
+                            <p class="card-text">A mock-up movie theater website for booking movies and ordering food and drinks online. Built with Node.js, MongoDB, Bootstrap, HTML, CSS, and AngularJS.</p>
+                            <a href="https://github.com/S0lut/xxxCinemas" class="btn btn-outline-primary btn-sm mx-1">Click me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card portfolio-card">
+                        <img src="images/blackpool.png" class="card-img-top" alt="BlackPool Website">
+                        <div class="card-body">
+                            <h5 class="card-title">BlackPool Website</h5>
+                            <p class="card-text">A full-stack web application for booking billiard tables and ordering food and drinks. Developed using Laravel 9, PHP, Blade, PostgreSQL, JavaScript, and CSS.</p>
+                            <a href="https://github.com/Nicholas-Eugene/blackpool" class="btn btn-outline-primary btn-sm mx-1">Click me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card portfolio-card">
+                        <img src="images/chat-appLYN.png" class="card-img-top" alt="Chatapp Layn">
+                        <div class="card-body">
+                            <h5 class="card-title">Chatapp Layn</h5>
+                            <p class="card-text">A chat application developed using Flutter and Firebase. Features include Google login, friend search, group chats, and message translation into seven languages.</p>
+                            <a href="https://github.com/Ariwjy/Chat-App-Layn" class="btn btn-outline-primary btn-sm mx-1">Click me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card portfolio-card">
+                        <img src="images/poverty-java.png" class="card-img-top" alt="Clustering Analysis Project">
+                        <div class="card-body">
+                            <h5 class="card-title">Clustering Analysis of Poverty Data in West Java</h5>
+                            <p class="card-text">A data analysis project using Python, Matplotlib, NumPy, and Pandas to perform clustering analysis on poverty data in West Java using K-Means and Fuzzy C-Means algorithms.</p>
+                            <a href="https://github.com/Nicholas-Eugene/Cluster-Analysis-Poverty-in-West-Java" class="btn btn-outline-primary btn-sm mx-1">Click me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="mt-3">&copy; 2024 Nicholas Eugene Supardi. All rights reserved.</p>
-      </div>
+    </section>
+
+    <footer class="text-center py-3 bg-dark text-light">
+        <section id="contact" class="py-5">
+            <div class="container text-center">
+                <h2>Contact Me</h2>
+                <form id="contactForm">
+                    <input type="email" class="form-control mb-3" placeholder="Your Email" required>
+                    <textarea class="form-control mb-3" rows="5" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+        <p>Phone: (+62)815-7446-2239</p>
     </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-  </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
 </html>
